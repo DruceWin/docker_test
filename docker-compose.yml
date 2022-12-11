@@ -1,14 +1,17 @@
 version: '3.7'
 
 services:
-#  db:
-#    image: postgres:12.0-alpine
-#    volumes:
-#      - postgres_volume:/var/lib/postgresql/data/
-#    enviroment:
-#      - POSTGRES_USER=admin
-#      - POSTGRES_PASSWORD=admin
-#      - POSTGRES_DB=my_dj_ps_dock
+  db:
+
+    image: postgres:12.0-alpine
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=my_dj_ps_dock
+    ports:
+      - 5432:5432
   web:
     build: .
     command:
@@ -22,5 +25,5 @@ services:
       - 8000:8000
 
 
-#volumes:
-#  postgres_volume:
+volumes:
+  postgres_volume:
